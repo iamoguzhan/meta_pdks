@@ -68,7 +68,6 @@ public class UserController {
     @PutMapping(value = "/put/{id}")
     public ResponseEntity<User> updateUser(@PathVariable(value = "id") String id, @RequestBody User userDetail) {
         User user = userService.getById(id);
-
         if (user == null) {
             return ResponseEntity.notFound().build();
         }
