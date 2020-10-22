@@ -100,7 +100,6 @@ public class UserController {
             user.setRoles(roleService.getByRole(userDetail.getRoles().get(0).getRole()));
         }
 
-
         User updateUser = userService.save(user);
 
         return ResponseEntity.ok().body(updateUser);

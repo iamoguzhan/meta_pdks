@@ -19,14 +19,27 @@ public class StatusService {
 
     //save status
     public Status save(Status status){
-//        status.setStatus("check-in");
-//        status.setDate_time(new Timestamp(Calendar.getInstance().getTimeInMillis()));
         return statusRepository.save(status);
     }
 
-    //get a status with date_time
-    public List<Status> getByDateTime(){
-        return statusRepository.findByDateTime();
+    //get a status with time
+    public List<Status> getByTime(){
+        return statusRepository.findByTime();
+    }
+
+    //get a status with date
+    public List<Status> getByDate(String user_id){
+        return statusRepository.findByDate(user_id);
+    }
+
+    //get a status by check-in
+    public List<Status> getByCheckIn(String user_id){
+        return statusRepository.findByCheckIn(user_id);
+    }
+
+    //get a status by ordered time
+    public List<Status> getByOrderedTime(String user_id){
+        return statusRepository.findByOrderedTime(user_id);
     }
 
 
