@@ -39,19 +39,19 @@ public class UserController {
     @PostMapping(value = "/add")
     public User addUser(@Validated @RequestBody User user) {
 
-        if(user.getName() != null && user.getSurname() != null){
+        if (user.getName() != null && user.getSurname() != null) {
             String name = user.getName();
             String surname = user.getSurname();
             String username;
 
-            if (name.contains(" ")){
+            if (name.contains(" ")) {
                 name = name.substring(0, name.indexOf(" ")).toLowerCase();
-            }else{
+            } else {
                 name = name.toLowerCase();
             }
-            if (surname.contains(" ")){
+            if (surname.contains(" ")) {
                 surname = surname.substring(0, surname.indexOf(" ")).toLowerCase();
-            }else{
+            } else {
                 surname = surname.toLowerCase();
             }
 
@@ -61,7 +61,7 @@ public class UserController {
 
         }
 
-        if (user.getPassword() != null){
+        if (user.getPassword() != null) {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         }
 
@@ -118,7 +118,7 @@ public class UserController {
         if (userDetail.getCompanies() != null) {
             user.setCompanies(companyService.getByCompany(userDetail.getCompanies().get(0).getCompany()));
         }
-        if (userDetail.getRoles() != null){
+        if (userDetail.getRoles() != null) {
             user.setRoles(roleService.getByRole(userDetail.getRoles().get(0).getRole()));
         }
 
