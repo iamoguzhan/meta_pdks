@@ -39,6 +39,28 @@ public class UserController {
     @PostMapping(value = "/add")
     public User addUser(@Validated @RequestBody User user) {
 
+        if(user.getName() != null && user.getSurname() != null){
+            String name = user.getName();
+            String surname = user.getSurname();
+            String username;
+
+            if (name.contains(" ")){
+                name = name.substring(0, name.indexOf(" ")).toLowerCase();
+            }else{
+                name = name.toLowerCase();
+            }
+            if (surname.contains(" ")){
+                surname = surname.substring(0, surname.indexOf(" ")).toLowerCase();
+            }else{
+                surname = surname.toLowerCase();
+            }
+
+            username = name + "." + surname;
+
+            user.setUsername(username);
+
+        }
+
         if (user.getPassword() != null){
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         }
