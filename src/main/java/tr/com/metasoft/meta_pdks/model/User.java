@@ -30,6 +30,8 @@ public class User {
     private String username;
     @Column(name = "password")
     private String password;
+    @Column(name = "active")
+    private Boolean active;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))

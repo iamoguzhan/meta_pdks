@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import tr.com.metasoft.meta_pdks.model.User;
+import tr.com.metasoft.meta_pdks.repository.RoleRepository;
 import tr.com.metasoft.meta_pdks.repository.UserRepository;
 
 import java.util.List;
@@ -12,8 +13,15 @@ import java.util.List;
 @Service
 public class UserService {
 
+    private UserRepository userRepository;
+    private RoleRepository roleRepository;
+
     @Autowired
-    UserRepository userRepository;
+    public UserService(UserRepository userRepository,
+                       RoleRepository roleRepository) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+    }
 
     public User save(User user){
         return userRepository.save(user);
@@ -31,9 +39,8 @@ public class UserService {
         userRepository.delete(user);
     }
 
-    @Bean
-    public BCryptPasswordEncoder encodePassword(){
-        return new BCryptPasswordEncoder();
+    public User findUserByUserName(String userName) {
+        return userRepository.findByUsername(userName);
     }
 
 }

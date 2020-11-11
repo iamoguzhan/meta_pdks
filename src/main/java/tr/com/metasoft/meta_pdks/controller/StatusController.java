@@ -3,6 +3,7 @@ package tr.com.metasoft.meta_pdks.controller;
 import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import tr.com.metasoft.meta_pdks.model.Status;
 import tr.com.metasoft.meta_pdks.model.User;
