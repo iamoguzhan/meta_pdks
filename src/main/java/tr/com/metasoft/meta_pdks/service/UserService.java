@@ -14,14 +14,6 @@ import java.util.List;
 public class UserService {
 
     private UserRepository userRepository;
-    private RoleRepository roleRepository;
-
-    @Autowired
-    public UserService(UserRepository userRepository,
-                       RoleRepository roleRepository) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-    }
 
     public User save(User user){
         return userRepository.save(user);

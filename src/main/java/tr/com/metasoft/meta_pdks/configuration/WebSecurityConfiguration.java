@@ -15,20 +15,29 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import tr.com.metasoft.meta_pdks.service.MyUserDetailsService;
 
 @Configuration
-//@EnableWebSecurity
+@EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 //    @Autowired
 //    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    private MyUserDetailsService userDetailsService;
+    private MyUserDetailsService myUserDetailsService;
 
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        return new MyUserDetailsService();
+//    }
+
+    @Bean
+    public BCryptPasswordEncoder encodePassword(){
+        return new BCryptPasswordEncoder();
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user").password("password").roles("ADMIN");
-//        auth.userDetailsService(userDetailsService).passwordEncoder(encodePassword());
+//        auth.inMemoryAuthentication().withUser("username").password("password").roles("ADMIN");
+        auth.userDetailsService(myUserDetailsService).passwordEncoder(encodePassword());
     }
 
     @Override
@@ -38,7 +47,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .cors()
                 .and()
                 .csrf().disable()
-                .authorizeRequests().antMatchers("/status/**").hasRole("ADMIN");
+                .authorizeRequests()
+                .antMatchers("/status/**").hasRole("ADMIN").anyRequest().authenticated();
 //                .anyRequest()
 //                .authenticated().and().csrf().disable().formLogin();
 
@@ -65,8 +75,5 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
 //    }
 
-    @Bean
-    public BCryptPasswordEncoder encodePassword(){
-        return new BCryptPasswordEncoder();
-    }
+
 }
