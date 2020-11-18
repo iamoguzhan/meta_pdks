@@ -2,13 +2,9 @@ package tr.com.metasoft.meta_pdks.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tr.com.metasoft.meta_pdks.model.Company;
-import tr.com.metasoft.meta_pdks.model.Role;
 import tr.com.metasoft.meta_pdks.model.Status;
 import tr.com.metasoft.meta_pdks.repository.StatusRepository;
 
-import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.List;
 
 @Service
