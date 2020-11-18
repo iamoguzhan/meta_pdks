@@ -28,6 +28,8 @@ public interface StatusRepository extends JpaRepository<Status, String> {
 
 //    @Query(value = "FROM Status s WHERE Date(s.date_time) = CURDATE() AND Time(s.date_time) > CURTIME()")
 
+//    @Query(value = "FROM Status s WHERE Date(s.date_time) = CURDATE() AND Time(s.date_time) > CURTIME()")
+
 
 
 
