@@ -54,7 +54,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
 
         auth.authenticationProvider(authenticationProvider());
 
@@ -65,7 +65,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .dataSource(dataSource)
 //                .usersByUsernameQuery("select username, password, enabled from user where username=?")
 //                .authoritiesByUsernameQuery("select username, role from user where username=?");
-
+//
     }
 
     @Override
