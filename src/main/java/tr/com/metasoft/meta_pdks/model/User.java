@@ -45,4 +45,19 @@ public class User {
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private List<Status> statuses;
 
+//    public Collection<GrantedAuthority> getAuthorities() {
+//        Collection<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+//        if (roles != null) {
+//            for (Role role : roles) {
+//                GrantedAuthority grantedAuthority = new GrantedAuthority() {
+//                    public String getAuthority() {
+//                        return role.getRole();
+//                    }
+//                };
+//                grantedAuthorities.add(grantedAuthority);
+//            }
+//        }
+//        return grantedAuthorities;
+//    }
+
 }

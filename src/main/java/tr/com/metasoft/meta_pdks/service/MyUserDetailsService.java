@@ -19,15 +19,21 @@ public class MyUserDetailsService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.findUserByUserName(username);
-        CustomUserDetails userDetails;
+//        CustomUserDetails userDetails;
+//
+//        if (user != null){
+//            userDetails = new CustomUserDetails();
+//            userDetails.setUser(user);
+//            return userDetails;
+//        }else{
+//            throw new UsernameNotFoundException("User not exist with: " + username);
+//        }
 
-        if (user != null){
-            userDetails = new CustomUserDetails();
-            userDetails.setUser(user);
-            return userDetails;
-        }else{
-            throw new UsernameNotFoundException("User not exist with: " + username);
+        if (user == null) {
+            throw new UsernameNotFoundException("Could not find user");
         }
+
+        return new CustomUserDetails(user);
 
 
 //        List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
