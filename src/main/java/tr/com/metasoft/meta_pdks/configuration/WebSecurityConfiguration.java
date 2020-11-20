@@ -1,6 +1,5 @@
 package tr.com.metasoft.meta_pdks.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -12,15 +11,12 @@ import org.springframework.security.core.userdetails.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import tr.com.metasoft.meta_pdks.service.MyUserDetailsService;
 
-import javax.sql.DataSource;
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 //    @Autowired
 //    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
 
 //    @Autowired
 //    private MyUserDetailsService myUserDetailsService;
@@ -29,7 +25,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //    public UserDetailsService userDetailsService() {
 //        return new MyUserDetailsService();
 //    }
-
 
 //    @Autowired
 //    private CustomAuthenticationProvider authProvider;
